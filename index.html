@@ -3,79 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inbox · directive stream</title>
+<title>Inbox · Directive Stream</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500&family=Inter:wght@300;400&display=swap">
-<style>
-  :root { --bg:#070c0f; --ink:#e8dcc8; --dim:#8a8275; --faint:#3a3530; --amber:#f5a623; --neon:#ff4d6d; --teal:#1e3a42; --rule:#1a1f23; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html,body { min-height:100%; }
-  body {
-    background: var(--bg); color: var(--ink); font-family:'Inter',sans-serif;
-    display:flex; flex-direction:column; min-height:100vh; -webkit-font-smoothing:antialiased; overflow-x:hidden;
-  }
-  body::before { content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background: radial-gradient(ellipse 70% 50% at 30% 20%, rgba(245,166,35,0.12), transparent 60%),
-                radial-gradient(ellipse 50% 50% at 80% 80%, rgba(255,77,109,0.08), transparent 70%); }
-  body::after { content:''; position:fixed; inset:0; z-index:1; pointer-events:none;
-    background: repeating-linear-gradient(180deg, transparent 0 3px, rgba(245,166,35,0.02) 3px 4px); }
-  .rain { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
-  .rain span { position:absolute; top:-10%; width:1px; height:40px;
-    background:linear-gradient(to bottom, transparent, rgba(245,166,35,0.3));
-    animation: fall linear infinite; }
-  @keyframes fall { to { transform: translateY(120vh); } }
-  nav { padding:24px 32px; display:flex; justify-content:space-between; position:relative; z-index:3;
-    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--dim); }
-  nav .brand { color:var(--amber); font-weight:500; }
-  nav .status::before { content:'●'; color:var(--neon); margin-right:6px; animation: pulse 1.8s infinite; }
-  @keyframes pulse { 50% { opacity:0.3; } }
-  main { flex:1; max-width:920px; width:100%; margin:0 auto; padding:80px 32px 40px; position:relative; z-index:3; }
-  .serial { font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:0.25em; color:var(--amber); margin-bottom:32px; opacity:0.7; }
-  .giant {
-    font-family:'Bebas Neue',sans-serif; font-size:clamp(120px,22vw,280px); line-height:0.85;
-    letter-spacing:0.02em; color:var(--ink); margin-bottom:12px;
-    text-shadow: 0 0 22px rgba(245,166,35,0.5), 0 0 40px rgba(245,166,35,0.25);
-  }
-  .giant .accent { color:var(--neon); text-shadow: 0 0 18px rgba(255,77,109,0.55); }
-  .tagline { font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:0.2em; color:var(--dim); text-transform:uppercase; margin-bottom:40px; }
-  .brief { font-size:17px; line-height:1.7; color:var(--ink); max-width:540px; margin-bottom:20px; }
-  .brief em { color:var(--amber); font-style:italic; }
-  .status-panel { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--dim); margin-top:44px; padding:16px 20px;
-    border:1px solid var(--rule); background:rgba(0,0,0,0.3); border-left:2px solid var(--neon); letter-spacing:0.08em; }
-  .status-panel span { color:var(--ink); }
-  footer { padding:20px 32px; display:flex; justify-content:space-between; position:relative; z-index:3;
-    font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--faint); border-top:1px solid var(--rule); }
-  footer a { color:var(--faint); text-decoration:none; }
-  footer a:hover { color:var(--neon); }
-  @media (max-width:640px) { .giant { font-size:90px; } nav,footer,main { padding-left:18px; padding-right:18px; } main { padding-top:60px; } }
-</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@500;700&display=swap">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="rain" id="rain"></div>
-  <nav><span class="brand">LAPD · RECORD INTAKE</span><span class="status">stream active</span></nav>
-  <main>
-    <div class="serial">DIRECTIVE STREAM · SECTOR 06 · LIVE</div>
-    <div class="giant">IN<span class="accent">/</span>BOX</div>
-    <div class="tagline">Directives · Deadlines · Intake Queue</div>
-    <p class="brief">An open directive is a directive with weight. This is where the weight goes — actions, follow-ups, rainfall that <em>has</em> to stop. Nothing more, nothing decorative.</p>
-    <p class="brief">Intake protocol under assembly. First directives logged shortly.</p>
-    <div class="status-panel">SOURCE: <span>github.com/Crosserin/erin-inbox-data</span> · PROTOCOL: <span>GH Issues → edge</span> · CLEARANCE: <span>operator only</span></div>
-  </main>
-  <footer>
-    <span>Erin Cross · X = Consulting</span>
-    <a href="https://cf-examples.pages.dev">← back to portfolio</a>
-  </footer>
-<script>
-  const rain = document.getElementById('rain');
-  for (let i = 0; i < 40; i++) {
-    const s = document.createElement('span');
-    s.style.left = (Math.random() * 100) + '%';
-    s.style.animationDuration = (2 + Math.random() * 3) + 's';
-    s.style.animationDelay = (-Math.random() * 4) + 's';
-    s.style.opacity = (0.2 + Math.random() * 0.5);
-    rain.appendChild(s);
-  }
-</script>
+
+<nav>
+  <span class="brand">DIRECTIVE STREAM<em>·</em>SECTOR 06</span>
+  <span class="status" id="statusLine">establishing uplink...</span>
+</nav>
+
+<main>
+  <!-- Quick-add -->
+  <div class="qa">
+    <div class="qa-label">📡 NEW DIRECTIVE</div>
+    <input type="text" id="qaTitle" placeholder="what needs doing?" autocomplete="off">
+    <div class="qa-row">
+      <div class="qa-labels" id="qaLabels"></div>
+      <button class="qa-submit" id="qaSubmit">TRANSMIT</button>
+    </div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="filter-bar" id="filterBar"></div>
+
+  <!-- Active list -->
+  <div class="list-head">
+    <h2>Active</h2>
+    <span class="count-badge"><span id="count">0</span> OPEN</span>
+  </div>
+  <div id="list">
+    <div class="loading">scanning stream...</div>
+  </div>
+
+  <!-- Recently completed -->
+  <div class="completed-section">
+    <div class="list-head">
+      <h2>Recently closed</h2>
+    </div>
+    <div id="closedList"></div>
+  </div>
+</main>
+
+<footer>
+  <span>Erin Cross · X = Consulting</span>
+  <a href="https://cf-examples.pages.dev">← portfolio</a>
+</footer>
+
+<script src="/app.js"></script>
 </body>
 </html>
