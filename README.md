@@ -1,21 +1,28 @@
 # erin-inbox
 
-> **Inbox** — themed personal tool · *Blade Runner 2049*
+> **Inbox** — Directive Stream · Sector 06
+>
+> *"You showed me a picture of a horse. I showed you a task list. Same thing."*
 
-Live: **https://erin-inbox.pages.dev**
+**📡 Live stream → [erin-inbox.pages.dev](https://erin-inbox.pages.dev)**
 
-Part of Erin Cross's personal tool suite. Each tool wears a different cinematic theme.
+---
 
-- **UI repo** (this, public): the page + Pages Functions
-- **Data repo** (`erin-inbox-data`, private): the actual inbox data
+Every open loop, every follow-up, every "I'll deal with that later" that would otherwise drown in email — it lives here.
 
-## Stack
+GitHub Issues as tasks. Labels as contexts: `home`, `homelab`, `kids`, `consulting`, `self`. One view, one inbox zero, one operator. No streaks, no gamification, no 14-day trial of productivity-as-a-service. Just the directives that actually need doing.
 
-- Cloudflare Pages (static + Pages Functions)
-- Data proxied from a private GitHub repo via narrowly-scoped PAT
-- GitHub Actions auto-deploys every push to `main`
+## Protocol
 
-## Related
+- **Front-end** (this, public): the intake terminal
+- **Back-end store** (private, [`erin-inbox-data`](https://github.com/Crosserin/erin-inbox-data)): every directive, open and closed
+- **Stack**: Cloudflare Pages + Pages Function, GitHub Issues as the ledger
+
+## Clearance
+
+Directives are private. The terminal is public. That is all you need to know.
+
+## Out there
 
 - 🌐 [xconsultingwork.com](https://xconsultingwork.com)
-- 🎨 [cf-examples portfolio](https://cf-examples.pages.dev)
+- 🧪 [cf-examples](https://cf-examples.pages.dev)
