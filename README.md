@@ -1,28 +1,55 @@
-# erin-inbox
+# 🌧️ erin-inbox
 
-> **Inbox** — Directive Stream · Sector 06
+> **DIRECTIVE STREAM · Sector 06 · LAPD Record Intake**
 >
 > *"You showed me a picture of a horse. I showed you a task list. Same thing."*
 
-**📡 Live stream → [erin-inbox.pages.dev](https://erin-inbox.pages.dev)**
+🟠 **STREAM:** [`OPEN`](https://erin-inbox.pages.dev) · 🔴 **QUEUE:** active · ☔ **RAIN:** 100% forever
 
 ---
 
-Every open loop, every follow-up, every "I'll deal with that later" that would otherwise drown in email — it lives here.
+## 📡 What this is
 
-GitHub Issues as tasks. Labels as contexts: `home`, `homelab`, `kids`, `consulting`, `self`. One view, one inbox zero, one operator. No streaks, no gamification, no 14-day trial of productivity-as-a-service. Just the directives that actually need doing.
+Every open loop, every follow-up, every "I'll deal with that later" that would otherwise drown in email — **it lives here.**
 
-## Protocol
+- 📋 GitHub Issues = tasks
+- 🏷️ Labels = contexts: `home` · `homelab` · `kids` · `consulting` · `self`
+- 👁️ One view. One inbox. One operator.
 
-- **Front-end** (this, public): the intake terminal
-- **Back-end store** (private, [`erin-inbox-data`](https://github.com/Crosserin/erin-inbox-data)): every directive, open and closed
-- **Stack**: Cloudflare Pages + Pages Function, GitHub Issues as the ledger
+No streaks. No gamification. No 14-day trial of productivity-as-a-service. Just the directives that **actually need doing**, and the directives that **got done**, and the line between them.
 
-## Clearance
+## 🖥️ Architecture
+
+```
+  [operator] 📱
+      │
+      ↓
+  erin-inbox.pages.dev
+      │
+  [Pages Function] ⚡
+      │
+      ↓
+  🐙 GitHub Issues API
+      │
+  erin-inbox-data 🔒
+```
+
+## 🧰 Stack
+
+- 🔥 Cloudflare Pages + Pages Functions
+- 🐙 GitHub Issues (the ledger)
+- 🏷️ Labels (the contexts)
+- ✅ Closed issues = done, forever, still searchable
+
+## 🤐 Clearance
 
 Directives are private. The terminal is public. That is all you need to know.
 
-## Out there
+## 🌐 Out there
 
-- 🌐 [xconsultingwork.com](https://xconsultingwork.com)
-- 🧪 [cf-examples](https://cf-examples.pages.dev)
+- 🏢 [xconsultingwork.com](https://xconsultingwork.com)
+- 🎬 [cf-examples.pages.dev](https://cf-examples.pages.dev)
+
+---
+
+*☔ "All those directives will be lost in time, like tears in rain." — Every task manager ever, before I built this.*
